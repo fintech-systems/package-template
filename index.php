@@ -15,4 +15,4 @@ $server = [
 
 $api = new WhmcsApi($server);
 
-ray($api->getClients());
+$result = $api->getClients();

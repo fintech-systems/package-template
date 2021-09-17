@@ -1,5 +1,5 @@
-# Virtualmin API
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/fintech-systems/whmcs-api) [![Build Status](https://app.travis-ci.com/fintech-systems/whmcs-api.svg?branch=main)](https://app.travis-ci.com/fintech-systems/whmcs-api) ![GitHub](https://img.shields.io/github/license/fintech-systems/whmcs-api)
+# WHMCS API
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/fintech-systems/package-template) [![Build Status](https://app.travis-ci.com/fintech-systems/package-template.svg?branch=main)](https://app.travis-ci.com/fintech-systems/package-template) ![GitHub](https://img.shields.io/github/license/fintech-systems/package-template)
 
 A WHMCS API designed to run standalone or as part of a Laravel Application
 
@@ -7,6 +7,29 @@ Requirements:
 
 - PHP 8.0
 - WHMCS
+
+# Example Usage
+
+```php
+<?php
+
+use FintechSystems\WhmcsApi\WhmcsApi;
+
+require 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$server = [
+    'url'            => $_ENV['WHMCS_URL'],
+    'api_identifier' => $_ENV['WHMCS_API_IDENTIFIER'],
+    'api_secret'     => $_ENV['WHMCS_API_SECRET'],
+];
+
+$api = new WhmcsApi($server);
+
+$result = $api->getClients();
+```
 
 # Features
 
@@ -27,6 +50,8 @@ Laravel App:
 
 
 ```php
+$newServiceId = 5;
+
 WhmcsApi::changePackage($newServiceId);
 ```
 
@@ -81,4 +106,5 @@ MIT
 eugene (at) vander.host <br>
 https://vander.host <br>
 +27 82 309-6710
+
 # package-template
