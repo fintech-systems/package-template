@@ -13,10 +13,9 @@ class ApiTest extends Setup
         $dotenv->load(__DIR__.'/../.env.testing');
 
         $server = [
-            'url' => $_ENV['WHMCS_URL'],            
+            'url' => $_ENV['WHMCS_URL'],
         ];
 
-        $this->assertEquals('whmcs.example.com', $server['url']);        
+        $this->assertEquals('whmcs.example.com', $server['url']);
     }
-    
 }
