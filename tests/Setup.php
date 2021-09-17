@@ -8,7 +8,6 @@ use Symfony\Component\Dotenv\Dotenv;
 
 class Setup extends TestCase
 {
-    
     private function dotEnvExists()
     {
         $dotenv = new Dotenv();
