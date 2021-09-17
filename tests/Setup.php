@@ -1,6 +1,6 @@
 <?php
 
-namespace FintechSystems\VirtualminApi\Tests;
+namespace FintechSystems\WhmcsApi\Tests;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
@@ -8,12 +8,7 @@ use Symfony\Component\Dotenv\Dotenv;
 
 class Setup extends TestCase
 {
-    // public $host;
-
-    // public function __construct() {
-    //     $this->host = $this->getHostInformation();
-    // }
-
+    
     private function dotEnvExists()
     {
         $dotenv = new Dotenv();
@@ -36,12 +31,12 @@ class Setup extends TestCase
         }
 
         $server = [
-            'hostname' => env('VIRTUALMIN_HOSTNAME'),
-            'username' => env('VIRTUALMIN_USERNAME'),
-            'password' => env('VIRTUALMIN_PASSWORD'),
+            'url'            => env('WHMCS_URL'),
+            'api_identifier' => env('WHMCS_API_IDENTIFIER'),
+            'api_secret'     => env('WHMCS_API_SECRET'),
         ];
 
-        if (! $server['hostname']) {
+        if (! $server['url']) {
             return false;
         }
 

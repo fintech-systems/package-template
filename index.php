@@ -16,3 +16,5 @@ $server = [
 $api = new WhmcsApi($server);
 
 $result = $api->getClients();
+
+ray($result);
