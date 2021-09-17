@@ -1,5 +1,5 @@
 # WHMCS API
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/fintech-systems/package-template) [![Build Status](https://app.travis-ci.com/fintech-systems/package-template.svg?branch=main)](https://app.travis-ci.com/fintech-systems/package-template) ![GitHub](https://img.shields.io/github/license/fintech-systems/package-template)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/fintech-systems/packagist-boilerplate) [![Build Status](https://app.travis-ci.com/fintech-systems/packagist-boilerplate.svg?branch=main)](https://app.travis-ci.com/fintech-systems/packagist-boilerplate) ![GitHub](https://img.shields.io/github/license/fintech-systems/packagist-boilerplate)
 
 A WHMCS API designed to run standalone or as part of a Laravel Application
 
@@ -8,7 +8,9 @@ Requirements:
 - PHP 8.0
 - WHMCS
 
-# Example Usage
+# Usage
+
+## Framework Agnostic PHP
 
 ```php
 <?php
@@ -30,6 +32,12 @@ $api = new WhmcsApi($server);
 
 $result = $api->getClients();
 ```
+
+## Laravel Installation
+
+Publish the configuration file:
+
+`php artisan vendor:publish`
 
 # Features
 
@@ -107,4 +115,3 @@ eugene (at) vander.host <br>
 https://vander.host <br>
 +27 82 309-6710
 
-# package-template

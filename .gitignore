@@ -27,6 +27,5 @@ Homestead.json
 ## Customizations
 ## /build is created by phpunit
 /build/
-phpunit.xml.dist.bak
 coverage.xml
 /.idea
