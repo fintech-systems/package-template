@@ -105,6 +105,12 @@ For local editing, add this to `composer.json`:
     ]
 ```
 
+Then in `require` section:
+
+```json
+"fintech-systems/virtualmin-api": "dev-main",
+```
+
 # License
 
 MIT

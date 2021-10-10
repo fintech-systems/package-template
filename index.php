@@ -13,8 +13,10 @@ $server = [
     'api_secret'     => $_ENV['WHMCS_API_SECRET'],
 ];
 
-$api = new WhmcsApi($server);
+$mode = $_ENV['WHMCS_API_MODE'];
+
+$api = new WhmcsApi($server, $mode);
 
 $result = $api->getClients();
 
-ray($result);
+//ray($result);

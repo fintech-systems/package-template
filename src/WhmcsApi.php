@@ -2,31 +2,28 @@
 
 namespace FintechSystems\WhmcsApi;
 
+use Exception;
 use FintechSystems\WhmcsApi\Contracts\BillingProvider;
 
 class WhmcsApi implements BillingProvider
 {
-    private bool $debug;
-
+    /*
+     * Options are debug, write-cache, read-cache
+     */
     private string $mode;
 
     private string $url;
     private string $api_identifier;
     private string $api_secret;
 
-    public function __construct($client, $mode = '')
+    public function __construct($server, $mode = '')
     {
-        ray($client);
+        $this->url            = $server['url'];
+        $this->api_identifier = $server['api_identifier'];
+        $this->api_secret     = $server['api_secret'];
 
         $this->mode = $mode;
-
-        if ($this->mode == 'debug') {
-            $this->debug = true;
-        }
-
-        $this->url = $client['url'];
-        $this->api_identifier = $client['api_identifier'];
-        $this->api_secret = $client['api_secret'];
+        ray($mode);
     }
 
     public function changePackage()
@@ -37,7 +34,7 @@ class WhmcsApi implements BillingProvider
     public function getClients($limit = 100)
     {
         $action = 'GetClients';
-        $data = ['limitnum' => $limit];
+        $data   = ['limitnum' => $limit];
 
         return $this->call($action, $data);
     }
@@ -54,32 +51,49 @@ class WhmcsApi implements BillingProvider
             $postfields = array_merge($data, $postfields);
         }
 
-        ray($postfields);
+//        ray($postfields);
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->url.'includes/api.php');
+        curl_setopt($ch, CURLOPT_URL, $this->url . 'includes/api.php');
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Avoid Unable to connect: 60 - SSL certificate problem: self signed certificate
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postfields));
-        $response = curl_exec($ch);
-        if (curl_error($ch)) {
-            $message = 'Unable to connect: '.curl_errno($ch).' - '.curl_error($ch);
-            ray($message);
-            exit($message);
+
+        try {
+            if ($this->mode == 'read-cache') {
+                return file_get_contents('storage/'.$action.'.json');
+            }
+
+            $response = curl_exec($ch);
+
+            if (curl_error($ch)) {
+                $message = 'Unable to connect: ' . curl_errno($ch) . ' - ' . curl_error($ch);
+//                ray($message);
+                return null;
+            }
+
+            if ($this->mode == 'write-cache' && $response) {
+                file_put_contents('storage/'.$action.'.json', $response);
+            }
+
+            $jsonData = json_decode($response, true);
+
+//            ray($jsonData);
+
+            if ($jsonData['result'] == 'error') {
+                throw new Exception("A CURL request in call() WHMCS API failed with: {$jsonData['message']}");
+            }
+
+            return $jsonData;
+
+        } catch (Exception $e) {
+            ray($e);
+        } finally {
+            curl_close($ch);
         }
-        curl_close($ch);
-
-        $jsonData = json_decode($response, true);
-
-        ray($jsonData);
-
-        if ($jsonData['result'] == 'error') {
-            throw new \Exception("A CURL request in call() WHMCS API failed with: {$jsonData['message']}");
-        }
-
-        return $jsonData;
+        return null;
     }
 }
