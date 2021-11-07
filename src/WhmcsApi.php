@@ -18,9 +18,9 @@ class WhmcsApi implements BillingProvider
 
     public function __construct($server, $mode = '')
     {
-        $this->url            = $server['url'];
+        $this->url = $server['url'];
         $this->api_identifier = $server['api_identifier'];
-        $this->api_secret     = $server['api_secret'];
+        $this->api_secret = $server['api_secret'];
 
         $this->mode = $mode;
         ray($mode);
@@ -34,7 +34,7 @@ class WhmcsApi implements BillingProvider
     public function getClients($limit = 100)
     {
         $action = 'GetClients';
-        $data   = ['limitnum' => $limit];
+        $data = ['limitnum' => $limit];
 
         return $this->call($action, $data);
     }
@@ -54,7 +54,7 @@ class WhmcsApi implements BillingProvider
 //        ray($postfields);
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->url . 'includes/api.php');
+        curl_setopt($ch, CURLOPT_URL, $this->url.'includes/api.php');
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -70,7 +70,7 @@ class WhmcsApi implements BillingProvider
             $response = curl_exec($ch);
 
             if (curl_error($ch)) {
-                $message = 'Unable to connect: ' . curl_errno($ch) . ' - ' . curl_error($ch);
+                $message = 'Unable to connect: '.curl_errno($ch).' - '.curl_error($ch);
 //                ray($message);
                 return null;
             }
@@ -88,12 +88,12 @@ class WhmcsApi implements BillingProvider
             }
 
             return $jsonData;
-
         } catch (Exception $e) {
             ray($e);
         } finally {
             curl_close($ch);
         }
+
         return null;
     }
 }
