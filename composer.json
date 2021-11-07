@@ -1,22 +1,18 @@
 {
-    "name": "fintech-systems/whmcs-php-api",
-    "description": "A PHP API designed to ease interfacing with WHMCS",
-    "type": "library",
+    "name": ":vendor_slug/:package_slug",
+    "description": ":package_description",
+    "keywords": [
+        ":vendor_name",
+        "laravel",
+        ":package_slug"
+    ],
+    "homepage": "https://github.com/:vendor_slug/:package_slug",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "FintechSystems\\WhmcsApi\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "FintechSystems\\WhmcsApi\\Tests\\": "tests"
-        }
-    },
     "authors": [
         {
-            "name": "Eugene van der Merwe",
-            "email": "eugenevdm@gmail.com"
+            "name": ":author_name",
+            "email": "author@domain.com",
+            "role": "Developer"
         }
     ],
     "require": {
