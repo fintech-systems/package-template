@@ -15,7 +15,7 @@ Requirements:
 ```php
 <?php
 
-use FintechSystems\WhmcsApi\WhmcsApi;
+use VendorName\WhmcsApi\WhmcsApi;
 
 require 'vendor/autoload.php';
 
@@ -35,9 +35,10 @@ $result = $api->getClients();
 
 ## Laravel Installation
 
-Publish the configuration file:
-
-`php artisan vendor:publish`
+You can publish the config file with:
+```bash
+php artisan vendor:publish --provider="VendorName\Skeleton\SkeletonServiceProvider" --tag=":package_slug-config"
+```
 
 # Features
 
