@@ -1,12 +1,20 @@
 # WHMCS API
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/fintech-systems/packagist-boilerplate) [![Build Status](https://app.travis-ci.com/fintech-systems/packagist-boilerplate.svg?branch=main)](https://app.travis-ci.com/fintech-systems/packagist-boilerplate) ![GitHub](https://img.shields.io/github/license/fintech-systems/packagist-boilerplate)
 
-A WHMCS API designed to run standalone or as part of a Laravel Application
+A Technology API designed to run standalone or part of a Laravel Application
 
 Requirements:
 
 - PHP 8.0
-- WHMCS
+- Technology
+
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require :vendor_slug/:package_slug
+```
 
 # Usage
 
@@ -15,7 +23,7 @@ Requirements:
 ```php
 <?php
 
-use VendorName\WhmcsApi\WhmcsApi;
+use VendorName\Api\Technology;
 
 require 'vendor/autoload.php';
 
@@ -23,14 +31,14 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $server = [
-    'url'            => $_ENV['WHMCS_URL'],
-    'api_identifier' => $_ENV['WHMCS_API_IDENTIFIER'],
-    'api_secret'     => $_ENV['WHMCS_API_SECRET'],
+    'api_url'        => $_ENV['TECHNOLOGY_API_URL'],
+    'api_key'        => $_ENV['TECHNOLOGY_API_KEY'],
+    'api_secret'     => $_ENV['TECHNOLOGY_API_SECRET'],
 ];
 
-$api = new WhmcsApi($server);
+$api = new Technology($server);
 
-$result = $api->getClients();
+$result = $api->getInformation();
 ```
 
 ## Laravel Installation
@@ -42,43 +50,43 @@ php artisan vendor:publish --provider="VendorName\Skeleton\SkeletonServiceProvid
 
 # Features
 
-Change Package
-
-## Change Package
+## Feature 1
 
 Framework Agnostic PHP:
 
 ```php
-$newServiceId = 5;
+$newRecord = ['test1', 'test2'];
 
-$api = new WhmcsApi;
-$api->changePackage($newServiceId);
+$api = new Technology;
+$api->post($test);
 ```
 
 Laravel App:
 
 
 ```php
-$newServiceId = 5;
+$newRecord = ['test1', 'test2'];
 
-WhmcsApi::changePackage($newServiceId);
+Technology::post($newRecord);
 ```
 
-Result:
+Expected result:
 
-A new package is applied to the service. If the package is linked to an API, the API will be called. 
+A new record is added.
 
-# Testing
+## Testing
 
-We love testing! Use the command below to run the tests.
+```bash
+vendor/bin/phpunit
+```
+
+Use the command below to run tests that excludes touching the API:
 
 `vendor/bin/phpunit --exclude-group=live`
 
-The exclude is so as to avoid Live API calls which may cause tests to fail
-
 The `storage` folder has examples API responses, also used for caching during tests.
 
-## Coverage reports
+### Coverage reports
 
 To regenerate coverage reports:
 
@@ -86,14 +94,7 @@ To regenerate coverage reports:
 
 See also `.travis.yml`
 
-We have a badge for Coverage but it's problematic due to Github issues:<br>
-![Codecov branch](https://img.shields.io/codecov/c/github/fintech-systems/whmcs-api/main) 
-
-## Version Control
-
-This application uses Semantic Versioning as per https://semver.org/
-
-# Local Editing
+### Local Editing
 
 For local editing, add this to `composer.json`:
 
@@ -112,13 +113,19 @@ Then in `require` section:
 "fintech-systems/virtualmin-api": "dev-main",
 ```
 
-# License
+## Version Control
 
-MIT
+This application uses Semantic Versioning as per https://semver.org/
 
-# Author
+## Changelog
 
-eugene (at) vander.host <br>
-https://vander.host <br>
-+27 82 309-6710
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
+## Credits
+
+- [:author_name](https://github.com/:author_username)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
