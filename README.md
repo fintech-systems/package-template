@@ -102,7 +102,7 @@ For local editing, add this to `composer.json`:
 "repositories" : [
         {
             "type": "path",
-            "url": "../whmcs-api"
+            "url": "../technology-api"
         }
     ]
 ```
@@ -110,7 +110,7 @@ For local editing, add this to `composer.json`:
 Then in `require` section:
 
 ```json
-"fintech-systems/virtualmin-api": "dev-main",
+"fintech-systems/technology-api": "dev-main",
 ```
 
 ## Version Control
