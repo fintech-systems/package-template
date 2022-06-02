@@ -113,10 +113,6 @@ Then in `require` section:
 "fintech-systems/technology-api": "dev-main",
 ```
 
-## Version Control
-
-This application uses Semantic Versioning as per https://semver.org/
-
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

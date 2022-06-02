@@ -1,8 +1,8 @@
 <?php
 
-namespace FintechSystems\WhmcsApi\Contracts;
+namespace FintechSystems\Payfast\Contracts;
 
 interface BillingProvider
 {
-    public function changePackage();
+    
 }

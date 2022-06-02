@@ -156,6 +156,6 @@ foreach ($files as $file) {
     };
 }
 
-confirm('Execute `composer install` and run tests?') && run('composer install && composer test');
+confirm('Execute `composer install` and run tests?') && run('composer install && vendor/bin/phpunit');
 
 confirm('Let this script delete itself?', true) && unlink(__FILE__);
