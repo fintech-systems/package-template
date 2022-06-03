@@ -1,3 +1,10 @@
+2022-06-03
+
+- Added better Github workflow run-tests.yml got one from Laravel Paddle, now called tests.yml
+- Added Unit .placeholder
+- PHPUnit tests failing, wrong version of PHP maybe? Getting ErrorException: Method ReflectionParameter::isArray() is deprecated
+
+
 2022-06-02
 
 Issues
