@@ -3,13 +3,13 @@
 namespace FintechSystems\PayFast\Tests;
 
 use Dotenv\Dotenv;
-use Orchestra\Testbench\TestCase as Orchestra;
 use FintechSystems\PayFast\PayFastServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
  * Perform a list of commonly used test functions for example ensure .env files are read, we
  * are able to link the service provider to a standalone tests, and provide an
- * alias so that we can easily test depenency injection without Laravel
+ * alias so that we can easily test depenency injection without Laravel.
  */
 class TestCase extends Orchestra
 {
@@ -32,15 +32,15 @@ class TestCase extends Orchestra
         return [
             'PayFast' => PayFast::class,
         ];
-    }    
+    }
 
     protected function loadEnvironmentVariables(): void
     {
-        if (! file_exists(__DIR__ . '/../.env')) {
+        if (! file_exists(__DIR__.'/../.env')) {
             return;
         }
 
-        $dotEnv = Dotenv::createImmutable(__DIR__ . '/..');
+        $dotEnv = Dotenv::createImmutable(__DIR__.'/..');
 
         $dotEnv->load();
     }

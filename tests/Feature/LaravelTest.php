@@ -2,9 +2,9 @@
 
 namespace FintechSystems\Payfast\Tests;
 
-use Orchestra\Testbench\TestCase;
 use FintechSystems\Payfast\Facades\Payfast;
 use FintechSystems\Payfast\PayfastServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
 {
@@ -24,10 +24,9 @@ class LaravelTest extends TestCase
 
     /** @test */
     public function dependency_injection_works()
-    {        
-        $result = Payfast::ping();        
+    {
+        $result = Payfast::ping();
 
         $this->assertTrue($result);
     }
-    
 }
