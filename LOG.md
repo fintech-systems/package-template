@@ -1,5 +1,19 @@
 2022-06-02
 
+Issues
+
+- Github Workflows: Cannot read config file ".php_cs.dist.php". Copied that across
+- Did DI test, and got; A facade root has not been set
+
+Change Log
+
+- After publish, lots of phpunit test issues, so renamed in autoload-dev in composer
+
+Notes:
+
+1. It would be better to rename all "Payfast" to "CodeTemplate"
+2. composer update not possible in this template due to patterns
+
 - Moved WHMCS to Payfast and did some cleaning up and stripping down
 
 2021-12-04

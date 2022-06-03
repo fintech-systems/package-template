@@ -17,12 +17,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "FintechSystems\\VirtualminApi\\": "src/"            
+            "FintechSystems\\Payfast\\": "src/"            
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FintechSystems\\VirtualminApi\\Tests\\": "tests"
+            "Tests\\": "tests/",
+            "FintechSystems\\Payfast\\Tests\\": "tests"
         }
     },
     "require": {
@@ -40,10 +41,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FintechSystems\\WhmcsApi\\WhmcsApiServiceProvider"
+                "FintechSystems\\Payfast\\PayfastServiceProvider"
             ],
             "aliases": {
-                "VirtualminApi": "FintechSystems\\WhmcsApi\\Facades\\WhmcsApi"
+                "VirtualminApi": "FintechSystems\\Payfast\\Facades\\Payfast"
             }
         }
     }
